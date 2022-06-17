@@ -1,8 +1,6 @@
 """
 Tests for the user API.
 """
-import email
-from os import stat
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -13,6 +11,7 @@ from rest_framework import status
 
 CREATE_USER_URL = reverse('user:create')
 TOKEN_URL = reverse('user:token')
+
 
 def create_user(**params):
     """Create and return a new user."""
@@ -75,8 +74,8 @@ class PublicUserApiTests(TestCase):
         create_user(**user_details)
 
         payload = {
-            'email': user_details('email'),
-            'password': user_details('password')
+            'email': user_details['email'],
+            'password': user_details['password']
         }
         res = self.client.post(TOKEN_URL, payload)
 
