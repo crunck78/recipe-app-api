@@ -1,4 +1,6 @@
-"""Tests for the tags API."""
+"""
+Tests for the tags API.
+"""
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.test import TestCase
@@ -20,7 +22,7 @@ def create_user(email='user@example.com', password='testpass123'):
 
 
 class PublicTagsApiTests(TestCase):
-    """Test unauthenticated API requests"""
+    """Test unauthenticated API requests."""
 
     def setUp(self):
         self.client = APIClient()

@@ -1,5 +1,5 @@
 """
-Views for the recipe APIs.
+Views for the recipe APIs
 """
 from rest_framework import (
     viewsets,
@@ -45,6 +45,6 @@ class TagViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
-    def get_querysets(self):
+    def get_queryset(self):
         """Filter queryset to authenticated user."""
         return self.queryset.filter(user=self.request.user).order_by('-name')
