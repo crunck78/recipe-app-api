@@ -2,7 +2,6 @@
 Tests for recipe APIs.
 """
 from decimal import Decimal
-from genericpath import exists
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase
@@ -63,7 +62,7 @@ class PublicRecipeAPITests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
-class PrivateRecipeAPITests(TestCase):
+class PrivateRecipeApiTests(TestCase):
     """Test authenticated API requests."""
 
     def setUp(self):
@@ -84,11 +83,8 @@ class PrivateRecipeAPITests(TestCase):
         self.assertEqual(res.data, serializer.data)
 
     def test_recipe_list_limited_to_user(self):
-        """Test list of recipes is limited ti authenticated user."""
-        other_user = create_user(
-            email='other@example.com',
-            password='testpass123'
-        )
+        """Test list of recipes is limited to authenticated user."""
+        other_user = create_user(email='other@example.com', password='test123')
         create_recipe(user=other_user)
         create_recipe(user=self.user)
 
@@ -125,11 +121,11 @@ class PrivateRecipeAPITests(TestCase):
         self.assertEqual(recipe.user, self.user)
 
     def test_partial_update(self):
-        """Test partial update if a recipe."""
+        """Test partial update of a recipe."""
         original_link = 'https://example.com/recipe.pdf'
         recipe = create_recipe(
             user=self.user,
-            title='Simple',
+            title='Sample recipe title',
             link=original_link,
         )
 
@@ -149,7 +145,7 @@ class PrivateRecipeAPITests(TestCase):
             user=self.user,
             title='Sample recipe title',
             link='https://example.com/recipe.pdf',
-            description='Simple recipe description',
+            description='Sample recipe description.',
         )
 
         payload = {
@@ -169,7 +165,7 @@ class PrivateRecipeAPITests(TestCase):
         self.assertEqual(recipe.user, self.user)
 
     def test_update_user_returns_error(self):
-        """test changing the the recipe user results in an error."""
+        """Test changing the the recipe user results in an error."""
         new_user = create_user(email='user2@example.com', password='test123')
         recipe = create_recipe(user=self.user)
 
@@ -180,7 +176,7 @@ class PrivateRecipeAPITests(TestCase):
         recipe.refresh_from_db()
         self.assertEqual(recipe.user, self.user)
 
-    def test_deleting_recipe(self):
+    def test_delete_recipe(self):
         """Test deleting a recipe successful."""
         recipe = create_recipe(user=self.user)
 
@@ -207,7 +203,7 @@ class PrivateRecipeAPITests(TestCase):
             'title': 'Thai Prawn Curry',
             'time_minutes': 30,
             'price': Decimal('2.50'),
-            'tags': [{'name': 'Thai'}, {'name': 'Dinner'}]
+            'tags': [{'name': 'Thai'}, {'name': 'Dinner'}],
         }
         res = self.client.post(RECIPES_URL, payload, format='json')
 
@@ -230,7 +226,7 @@ class PrivateRecipeAPITests(TestCase):
             'title': 'Pongal',
             'time_minutes': 60,
             'price': Decimal('4.50'),
-            'tags': [{'name': 'Indian'}, {'name': 'Breakfast'}]
+            'tags': [{'name': 'Indian'}, {'name': 'Breakfast'}],
         }
         res = self.client.post(RECIPES_URL, payload, format='json')
 
@@ -239,7 +235,7 @@ class PrivateRecipeAPITests(TestCase):
         self.assertEqual(recipes.count(), 1)
         recipe = recipes[0]
         self.assertEqual(recipe.tags.count(), 2)
-        self.assertIn(tag_indian, recipe.tags.all)
+        self.assertIn(tag_indian, recipe.tags.all())
         for tag in payload['tags']:
             exists = recipe.tags.filter(
                 name=tag['name'],
