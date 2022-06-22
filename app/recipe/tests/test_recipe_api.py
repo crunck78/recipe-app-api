@@ -262,13 +262,13 @@ class PrivateRecipeApiTests(TestCase):
         recipe.tags.add(tag_breakfast)
 
         tag_lunch = Tag.objects.create(user=self.user, name='Lunch')
-        payload = {'tags':[{'name': 'Lunch'}]}
+        payload = {'tags': [{'name': 'Lunch'}]}
         url = detail_url(recipe.id)
         res = self.client.patch(url, payload, format='json')
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertIn(tag_lunch, recipe.tags.all())
-        self.assertNotIn(tag_breakfast, recipe.tag.all())
+        self.assertNotIn(tag_breakfast, recipe.tags.all())
 
     def test_clear_recipe_tags(self):
         """Test clearing a recipes tags."""
@@ -278,7 +278,7 @@ class PrivateRecipeApiTests(TestCase):
 
         payload = {'tags': []}
         url = detail_url(recipe.id)
-        res = self.client.patch(url, payload, format='')
+        res = self.client.patch(url, payload, format='json')
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(recipe.tags.count(), 0)
