@@ -1,8 +1,7 @@
 """
 Tests for the ingredients API.
 """
-from http import client
-from importlib.resources import path
+
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.test import TestCase
@@ -79,7 +78,7 @@ class PrivateIngredientsApiTests(TestCase):
 
         payload = {'name': 'Coriander'}
         url = detail_url(ingredient.id)
-        res = self.client.path(url, payload)
+        res = self.client.patch(url, payload)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         ingredient.refresh_from_db()
