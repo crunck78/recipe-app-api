@@ -2,7 +2,6 @@
 Tests for the ingredients API.
 """
 from decimal import Decimal
-from venv import create
 
 from django.contrib.auth import get_user_model
 from django.urls import reverse
