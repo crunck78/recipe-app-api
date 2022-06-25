@@ -1,7 +1,6 @@
 """
 Views for the recipe APIs
 """
-from crypt import methods
 from rest_framework import (
     viewsets,
     mixins,

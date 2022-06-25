@@ -2,7 +2,7 @@
 Tests for recipe APIs.
 """
 from decimal import Decimal
-from sqlite3 import paramstyle
+
 import tempfile
 import os
 
@@ -35,7 +35,7 @@ def detail_url(recipe_id):
 
 
 def image_upload_url(recipe_id):
-    """Create and return an image upload URL"""
+    """Create and return an image upload URL."""
     return reverse('recipe:recipe-upload-image', args=[recipe_id])
 
 
@@ -175,7 +175,7 @@ class PrivateRecipeApiTests(TestCase):
         self.assertEqual(recipe.user, self.user)
 
     def test_update_user_returns_error(self):
-        """Test changing the the recipe user results in an error."""
+        """Test changing the recipe user results in an error."""
         new_user = create_user(email='user2@example.com', password='test123')
         recipe = create_recipe(user=self.user)
 
@@ -254,7 +254,7 @@ class PrivateRecipeApiTests(TestCase):
             self.assertTrue(exists)
 
     def test_create_tag_on_update(self):
-        """Test creating tag when updating a recipe"""
+        """Test create tag when updating a recipe."""
         recipe = create_recipe(user=self.user)
 
         payload = {'tags': [{'name': 'Lunch'}]}
@@ -398,7 +398,7 @@ class ImageUploadTests(TestCase):
 
     def test_upload_image(self):
         """Test uploading an image to a recipe."""
-        url = image_upload_url(self.user.id)
+        url = image_upload_url(self.recipe.id)
         with tempfile.NamedTemporaryFile(suffix='.jpg') as image_file:
             img = Image.new('RGB', (10, 10))
             img.save(image_file, format='JPEG')
@@ -412,9 +412,9 @@ class ImageUploadTests(TestCase):
         self.assertTrue(os.path.exists(self.recipe.image.path))
 
     def test_upload_image_bad_request(self):
-        """Test uploading invalid image."""
+        """Test uploading an invalid image."""
         url = image_upload_url(self.recipe.id)
-        payload = {'image': 'notaniamge'}
+        payload = {'image': 'notanimage'}
         res = self.client.post(url, payload, format='multipart')
 
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)

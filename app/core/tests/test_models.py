@@ -65,7 +65,7 @@ class ModelTests(TestCase):
         )
         recipe = models.Recipe.objects.create(
             user=user,
-            title='Sample recipe name.',
+            title='Sample recipe name',
             time_minutes=5,
             price=Decimal('5.50'),
             description='Sample recipe description.',
@@ -92,7 +92,7 @@ class ModelTests(TestCase):
 
     @patch('core.models.uuid.uuid4')
     def test_recipe_file_name_uuid(self, mock_uuid):
-        """test generating image path."""
+        """Test generating image path."""
         uuid = 'test-uuid'
         mock_uuid.return_value = uuid
         file_path = models.recipe_image_file_path(None, 'example.jpg')
