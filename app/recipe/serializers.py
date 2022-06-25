@@ -11,7 +11,7 @@ from core.models import (
 
 
 class IngredientSerializer(serializers.ModelSerializer):
-    """serializer for ingredients."""
+    """Serializer for ingredients."""
 
     class Meta:
         model = Ingredient
@@ -41,6 +41,13 @@ class RecipeSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['id']
 
+
+class RecipeDetailSerializer(RecipeSerializer):
+    """Serializer for recipe detail view."""
+
+    class Meta(RecipeSerializer.Meta):
+        fields = RecipeSerializer.Meta.fields + ['description', 'image']
+
     def _get_or_create_tags(self, tags, recipe):
         """Handle getting or creating tags as needed."""
         auth_user = self.context['request'].user
@@ -57,7 +64,7 @@ class RecipeSerializer(serializers.ModelSerializer):
         for ingredient in ingredients:
             ingredient_obj, created = Ingredient.objects.get_or_create(
                 user=auth_user,
-                **ingredient
+                **ingredient,
             )
             recipe.ingredients.add(ingredient_obj)
 
@@ -87,13 +94,6 @@ class RecipeSerializer(serializers.ModelSerializer):
 
         instance.save()
         return instance
-
-
-class RecipeDetailSerializer(RecipeSerializer):
-    """Serializer for recipe detail view."""
-
-    class Meta(RecipeSerializer.Meta):
-        fields = RecipeSerializer.Meta.fields + ['description']
 
 
 class RecipeImageSerializer(serializers.ModelSerializer):

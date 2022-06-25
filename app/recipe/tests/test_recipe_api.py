@@ -2,7 +2,6 @@
 Tests for recipe APIs.
 """
 from decimal import Decimal
-
 import tempfile
 import os
 
@@ -25,6 +24,7 @@ from recipe.serializers import (
     RecipeSerializer,
     RecipeDetailSerializer,
 )
+
 
 RECIPES_URL = reverse('recipe:recipe-list')
 
