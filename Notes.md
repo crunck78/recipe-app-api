@@ -1,11 +1,14 @@
-# Section 1:Introduction
-## Technical Requirements
+## Section 1:Introduction
+
+### Technical Requirements
+
 1. Machine : Windows / macOS / Linux (Capable of running Docker)
 2. GitHub account with the free 2000 actions minutes
 3. If using Windows
     - install chocolatey package manager
 
-## API details & Upgrades
+### API details & Upgrades
+
 1. Features :
     - User Authentication
     - Creating Objects
@@ -19,7 +22,8 @@
     - Use a second Screen
     - Answer questions in the Q&A. (Best way to cement your knowledge, put it into practice, and establish confidence in your skills)
 
-## Course Structure
+### Course Structure
+
 1. App Design (Plan the API and list all technologies needed)
 2. Intro to TDD
 3. System Setup (prepare our system by installing tools needed during development)
@@ -36,7 +40,8 @@
 14. Summary
 15. Upgrades (on new versions of dependencies)
 
-## Getting Help
+### Getting Help
+
 - 9 out of 10 when you have problem with your code, it is because you have a typo that you can not locate it.
 - Bespoke Tool : Code Checker, checks your source code against the original source code and shows diffs.
 - Strengthen your problem solving skills by trying to find the answer to your question on your on.
@@ -46,8 +51,10 @@
 - Exhaust all possibilities before posting a new question.
 - [How to ask questions on Stack Overflow and get answers](https://londonappdeveloper.com/how-to-ask-questions-on-stack-overflow-and-get-answers/)
 
-# Section 2:App Design
-## App Overview
+## Section 2:App Design
+
+### App Overview
+
 1. App Design
     - Recipe API - Backend Component of a Recipe App
     - Focus is on the backend and the database of the app.
@@ -62,19 +69,22 @@
         2. recipe-ingredients API (Get, a list of ingredients using HTTP GET, Put, Patch, Delete a specific ingredient)
         3. recipe API (Get, a list of recipe, Post a new Recipe and specific id endpoints that allow to get a particular recipe, or update using put and patch and delete using a id)
         4. upload API (uploading images to recipes)
+        5. tags API (Allow to create and manage tags in the system)
+        6. schema API (allows to get a schema document which basically defines our API and that is how swagger creates this page an automatically generated API that is added with the Django Framework)
+        7. users API (creates an user and an authentication token)
+
     - Keep different data types in different API endpoints because it is easier to use it that way in frontend.
 
-5. tags API (Allow to create and manage tags in the system)
-6. schema API (allows to get a schema document which basically defines our API and that is how swagger creates this page an automatically generated API that is added with the Django Framework)
-7. users API (creates an user and an authentication token)
+### Technologies
 
-## Technologies
 1. Python Programming Language used to build our API. Foundation of our API
 2. Django Python Web Framework
-- Handles :
-    - URL Mappings of APIs
-    - Object Relational Mapper (Create and manage objects in our database using Python and the admin site.)
-    - Admin Site
+
+   - Handles :
+     - URL Mappings of APIs
+     - Object Relational Mapper (Create and manage objects in our database using Python and the admin site.)
+     - Admin Site
+
 3. Django REST Framework
     - Django add-on (Adds features for building rest APIs)
 4. PostgreSQL
@@ -89,66 +99,74 @@
 7. Github Actions. Handles the automation of the application.
     - Run testings and linting every time changes are make in the code and push the code on Github.
 
-## Django project structure
+### Django project structure
+
 - Django Projects are split into various apps.
     1. app/ - Django project
     2. app/core/ - Code shared between multiple apps (database definition using Django models)
     3. app/user/ - User related code (user registration & authentication tokens)
     4. app/recipe/ - Recipe related coe (handling, updating and managing recipes, ingredients and tags)
 
-# Section 3:Test Driven Development
-## Test Driven Development
+## Section 3:Test Driven Development
+
+### Test Driven Development
+
 - A development practice.
     1. Write Test
     2. Write code that passes the test code.
     3. Refactor
     4. Rerun Test.
 - Unit test is code that tests code.
-    - sets up conditions / inputs
-    - runs a piece of code
-    - check outputs using "assertions"
-    - Many benefits
-        - Ensures code runs as expected
-        - Catches / reduces bugs
-        - Improves reliability
-        - Provide confidence (Good test coverage)
-        - better understanding of code
+  - sets up conditions / inputs
+  - runs a piece of code
+  - check outputs using "assertions"
+  - Many benefits
+    - Ensures code runs as expected
+    - Catches / reduces bugs
+    - Improves reliability
+    - Provide confidence (Good test coverage)
+    - better understanding of code
 
-# Section 4:System Setup
-## What to install
+## Section 4:System Setup
+
+### What to install
+
 - VSCode
 - Docker Desktop / Docker for Linux
 - Git-SCM
 
-## Setup confirmation
+### Setup confirmation
 
-# Section 5:Project Setup
-## New Project Overview
+## Section 5:Project Setup
+
+### New Project Overview
+
 - Why use Docker?
     1. Consistent dev and prod environment
         - Docker Image can be use for development as for production.
         - Easier collaboration. (all dependencies are  inside Docker Image )
         - Capture all dependencies as code
-            -  Python requirements
+            - Python requirements
             - Operation system dependencies
         - Easier cleanup
 - How to use Docker
-    - Define Dockerfile (contains all the operating system level dependencies that our project needs)
-    - Create Docker Compose configuration (instruct Docker how to run the images that are created from our Docker file configuration)
-    - Run all commands via Docker Compose
+  - Define Dockerfile (contains all the operating system level dependencies that our project needs)
+  - Create Docker Compose configuration (instruct Docker how to run the images that are created from our Docker file configuration)
+  - Run all commands via Docker Compose
 - Docker on Github Actions
-    - Docker Hub introduced rate limit:
-        - 100 pulls/ 6hr for unauthenticated users
-        - 200 pulls/ 6hr for authenticated users
-    - Github Actions is a shared service
-        - 100 pulls/ 6hr applied for all users
-    - Authenticate with Docker Hub
-        - Create account
-        - Setup credentials
-        - Login before running job
-        - Get 200 pulls/ 6hr for free!
+  - Docker Hub introduced rate limit:
+    - 100 pulls/ 6hr for unauthenticated users
+    - 200 pulls/ 6hr for authenticated users
+  - Github Actions is a shared service
+    - 100 pulls/ 6hr applied for all users
+  - Authenticate with Docker Hub
+    - Create account
+    - Setup credentials
+    - Login before running job
+    - Get 200 pulls/ 6hr for free!
 
-## Creating Github project
+### Creating Github project
+
 1. Create Github Account
 2. Create Docker Account
 3. Create Repository (public, .gitignore for Python, Readme.md)
@@ -157,43 +175,50 @@
 6. Docker -> Username -> Settings -> Create new Access Token -> Give a description to Token (!Do not close the Window)
 7. Github -> Settings -> Secrets -> New repository secret -> Name -> DOCKERHUB_USER -> Value <dockerhub-username> -> Add Secret
 8. New repository secret -> Name -> DOCKERHUB_TOKEN -> Value -> <dockerhub-access-token> (You can close the Window on point 6) -> Add Secret
+
 - To revoke access to the project, delete Dockerhub Access Token from Docker.
 
-## Docker and Django
-Resource : https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+### Docker and Django
+
+Resource : <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>
+
 - Recommended to use Docker when working with Django projects.
 - Drawbacks
-    - VSCode unable to access interpreter of Python project
-    - More difficult to use interactive features (Debugger, Linting tools)
+  - VSCode unable to access interpreter of Python project
+  - More difficult to use interactive features (Debugger, Linting tools)
 - Configure Docker
-    - Create a Dockerfile
-    - Lists of steps for creating image
-        - Choose a base image (python)
-        - install dependencies
-        - setup users (inside Docker Container)
+  - Create a Dockerfile
+  - Lists of steps for creating image
+    - Choose a base image (python)
+    - install dependencies
+    - setup users (inside Docker Container)
 - Docker Compose
-    - Defines how Docker image(s) should be used
-    - Define images as "services"
-        - Name (eg:app)
-        - Port mappings
-        - Volume mappings
+  - Defines how Docker image(s) should be used
+  - Define images as "services"
+    - Name (eg:app)
+    - Port mappings
+    - Volume mappings
 - Using Docker Compose
-    - Run all commands through Docker Compose
+  - Run all commands through Docker Compose
         command : docker-compose run --rm app sh -c "python manage.py collectstatic"
-        - docker-compose runs a Docker Compose command
-        - run will start a specific container defined in config
-        - --rm remove the container as it starts running
-        - app is the name of the service
-        - sh -c passes in a shell command
-        - Command to run inside container
+    - docker-compose runs a Docker Compose command
+    - run will start a specific container defined in config
+    - --rm remove the container as it starts running
+    - app is the name of the service
+    - sh -c passes in a shell command
+    - Command to run inside container
+
 1. First part of command : docker-compose run --rm app is Docker Compose syntax
 2. Second part of command : sh -c "python manage.py collectstatic" runs on the container
 
-## Define Python Requirements
+### Define Python Requirements
+
 1. Create file requirements.txt lists all Python requirements needed in Project
+
 - Add each requirement by a specific version for ex.: Django>=3.2.4,<3.3
 
-## Create project Dockerfile
+### Create project Dockerfile
+
 1. In Project Root add Dockerfile
 2. Define use base image [DockerHub](hub.docker.com) here you can search for all base images.
 3. Define Maintainer
@@ -215,27 +240,31 @@ Resource : https://docs.docker.com/develop/develop-images/dockerfile_best-practi
     - This specifies files to exclude from Docker context.
     - When running Docker image, it uses a so called Docker Context, which is the directory where you running from.
 
-    - Some standard .dockerignore file :
-        ".git
-        .gitignore
+    - Some standard ```.dockerignore``` file :
 
-        ## Docker
-        .docker
+        ```.dockerignore
+            .git
+            .gitignore
 
-        ## Python
-        app/__pycache__/
-        app/*/__pycache__/
-        app/*/*/__pycache__/
-        app/*/*/*/__pycache__/
-        .env/
-        .venv/
-        venv/"
+            .docker
+
+            app/__pycache__/
+            app/*/__pycache__/
+            app/*/*/__pycache__/
+            app/*/*/*/__pycache__/
+            .env/
+            .venv/
+            venv/
+        ```
+
 14. Build Docker image
     - command : docker build .
 
-## Create Docker Compose configuration
+### Create Docker Compose configuration
+
 - Docker Compose Files consist of services needed by application.
 - filename : docker-compose.yml
+
 1. Docker Compose version syntax used
 2. Define Services
     - app (a service that will run our dockerfile)
@@ -250,7 +279,8 @@ Resource : https://docs.docker.com/develop/develop-images/dockerfile_best-practi
 
 command : docker-compose build (It builds the docker image, same as with "docker build .")
 
-## Linting and Testing
+### Linting and Testing
+
 - Linting is a tool that check your code formatting
 - Handle Linting
     1. Install flake8 package (linting tool)
@@ -262,8 +292,10 @@ command : docker-compose build (It builds the docker image, same as with "docker
     3. Run test through Docker Compose
         - docker-compose run --rm app sh -c "python manage.py test"
 
-## Configure Flake8
+### Configure Flake8
+
 - We do not need flake8 package when we deploy application
+
 1. Add a requirements.dev.txt file.
     - on costume step of build so this requirements are install only when we build an image for our local development server
 2. Add list of dev dependencies to requirements.dev.txt file
@@ -273,20 +305,25 @@ command : docker-compose build (It builds the docker image, same as with "docker
     - add .flake config file
         - add files to be excluded
 
-## Create Django Project
+### Create Django Project
+
 command : docker-compose run --rm app sh -c "django-admin startproject app ." (Creates a django project named app in the current directory.)
+
 - Because Django is install in Docker Image, run the CLI command just as were on our local machine.
 - Sync was made by the volumes we defined in Docker compose.
 - Because of that, everything that we create in our local machine, gets mapped to Docker image and vice versa.
 
-## Run project with Docker Compose
+### Run project with Docker Compose
+
 command : docker-compose up (command to start docker services)
+
 - Open browser at : 127.0.0.1:8000
 - Stop the development server with ctrl + c
 
 ## Project setup overview
 
 ## Quiz Docker and Docker Compose
+
 1. What is defined in the Dockerfile ?
     - Operation system level dependencies.
     (The Dockerfile is used to build our image, which contains a mini Linux Operating System with all the dependencies needed to run our project.
@@ -296,15 +333,18 @@ command : docker-compose up (command to start docker services)
     (That's right! Linting is used to ensure code is formatted correctly. It highlights issues like invalid tab spacing and line lengths.)
 
 # Section 6:Configure Github Actions
+
 ## What is Github Actions?
+
     - An automation tool.
     - Similar to Travis-CI, GitLAb CI/CD, Jenkins
     - Allows to run Jobs when code changes
     - Automate tasks
+
 - Common uses
-    - Handle deployment (not covered here, complex tasks for DevOps)
-    - Code linting
-    - Run unit test.
+  - Handle deployment (not covered here, complex tasks for DevOps)
+  - Code linting
+  - Run unit test.
 - How it works?
     1. Setup triggers. This are anything that happens to your project on Github.
         - This are documented on [Github Actions Page](https://docs.github.com/en/actions).
@@ -313,11 +353,12 @@ command : docker-compose up (command to start docker services)
         - Our trigger will be Run unit tests.
     4. After job runs, there will be an output of that job, either successful or fail.
 - Pricing
-    - Charged per minutes. (per jobs run)
-    - 2.000 free minutes for Github free accounts
-    - Various plans available
+  - Charged per minutes. (per jobs run)
+  - 2.000 free minutes for Github free accounts
+  - Various plans available
 
 ## Configuring Github Actions
+
 1. Create a config file at .github/workflows/checks.yml
 2. Create triggers in config.
 3. Add some steps for running our testing and linting on the project.
@@ -334,7 +375,7 @@ command : docker-compose up (command to start docker services)
         - Additional plans available
 
     - How to authenticate with Docker Hub?
-        1. Register account on https://hub.docker.com
+        1. Register account on <https://hub.docker.com>
         2. Use docker login during our job
         3. Add secrets to Github project (used to authenticate with docker hub)
             - They allow you to add encrypted variables to the project, so that you store variables that can be used in your jobs.
@@ -342,9 +383,11 @@ command : docker-compose up (command to start docker services)
             - They are decrypted automatically when they're needed for the jobs you run in Github actions.
 
 ## Create Github actions config
-Resource : https://github.com/marketplace/actions/docker-login
-Resource : https://github.com/marketplace/actions/checkout
-Resource : https://github.com/marketplace?type=actions
+
+Resource : <https://github.com/marketplace/actions/docker-login>
+Resource : <https://github.com/marketplace/actions/checkout>
+Resource : <https://github.com/marketplace?type=actions>
+
 1. Add .github folder on root of the project
 2. Inside .github folder add new folder workflows
 3. Add a file inside workflows folder. Name is arbitrarily, extension muss end with .yml
@@ -372,13 +415,16 @@ Resource : https://github.com/marketplace?type=actions
         run: docker-compose run --rm app sh -c "python manage.py test" (runs tests)
       - name: Lint
         run: docker-compose run --rm app sh -c "flake8" (run linting)
+
 - If any of the actions fails, that means they return anything other than exit zero, which is the Linux exit signal for successful exit.
 - Docker Compose comes pre-installed in Ubuntu 20.04 runner.
 
 ## Test Github ACtions
+
 1. On Github Project -> Actions after you push changes, the job should be visible.
 
 ## Quit Github Actions configuration
+
 1. What are common uses for GitHub Actions?
     - Handling deployment, linting and unit tests (These tasks are often automated using GitHub Actions)
 2. What language do you use to define GitHub actions?
@@ -387,128 +433,139 @@ Resource : https://github.com/marketplace?type=actions
     - Because there is a cap on the number of image pulls you can do. (Yes, in order to ensure we can use our 200 free pulls, we need to authenticate.)
 
 # Section 7:Test Driven Development with Django
+
 ## Testing in Django
+
 - Django test framework is build into Django and comes out of the box.
-    - Based on the unittest library that comes out of the box with Python, but Django test framework adds some additional features.
-    - Django adds features
-        - Test client - dummy web browser
-        - Simulate authentication
-        - Temporary database
-    - Django REST Framework adds features
-        - API test client
+  - Based on the unittest library that comes out of the box with Python, but Django test framework adds some additional features.
+  - Django adds features
+    - Test client - dummy web browser
+    - Simulate authentication
+    - Temporary database
+  - Django REST Framework adds features
+    - API test client
 - Where do you put test?
-    - Placeholder tests.py added to each app
-    - Or, create tests/ subdirectory to split tests up
-    - Keep in mind:
-        - Only use tests.py or tests/ directory (not both)
-        - Test modules must start with test_
-        - Test directories must contain __init__.py
+  - Placeholder tests.py added to each app
+  - Or, create tests/ subdirectory to split tests up
+  - Keep in mind:
+    - Only use tests.py or tests/ directory (not both)
+    - Test modules must start with test_
+    - Test directories must contain __init__.py
 - Test Database
-    - Test code that uses the DB
-    - Specific database for tests
+  - Test code that uses the DB
+  - Specific database for tests
         Runs test -> Clears data
-    - Happens fr every test (by default)
+  - Happens fr every test (by default)
 - Test classes
-    - SimpleTestCase
-        - No database integration
-        - Useful if no database is required for your test
-        - Save time executing tests
-    - TestCase
-        - Database integration
-        - Useful for testing code that uses the database
+  - SimpleTestCase
+    - No database integration
+    - Useful if no database is required for your test
+    - Save time executing tests
+  - TestCase
+    - Database integration
+    - Useful for testing code that uses the database
 - Writing tests
-    - import test class
-        - SimpleTestCase - No database
-        - TestCase - Database
-    - import objects to test
-    - Define test class
-    - Add test method
-    - Setup inputs
-    - Execute code to be tested
-    - Check output
+  - import test class
+    - SimpleTestCase - No database
+    - TestCase - Database
+  - import objects to test
+  - Define test class
+  - Add test method
+  - Setup inputs
+  - Execute code to be tested
+  - Check output
 
 ## Writing tests
 
 ## Writing a test using TDD
 
 ## Mocking
+
 - Override or change behavior of dependencies
 - Avoid unintended side effects
 - Isolate code being tested
 - Why use mocking?
-    - Avoid relying on external services
-        - Can't guarantee they will be available
-        - Makes tests unpredictable and inconsistent
-    - Avoid unintended consequences
-        - Accidentally sending emails
-        - Overloading external services
+  - Avoid relying on external services
+    - Can't guarantee they will be available
+    - Makes tests unpredictable and inconsistent
+  - Avoid unintended consequences
+    - Accidentally sending emails
+    - Overloading external services
 - Example :
     register_user() --> create_in_db() --> send_welcome_email() -->
-    - Prevent email being send
-    - Ensure send_welcome_email() called correctly
+  - Prevent email being send
+  - Ensure send_welcome_email() called correctly
 - Another benefit :
-    - Speed up tests
+  - Speed up tests
     check_db() --> sleep() --> check_db()
-    - Replace sleep function with a mock so test is faster
+  - Replace sleep function with a mock so test is faster
 - How to mock code ?
-    - Use unittest.mock
-        - MagicMock/Mock - Replace real objects
-        - patch - Overrides code for tests
+  - Use unittest.mock
+    - MagicMock/Mock - Replace real objects
+    - patch - Overrides code for tests
 
 ## Testing web requests
+
 - Testing APIs
-    - Make actual request
-    - Check result
--  Django REST Framework APIClient
-    - Based on the Django's TestClient
-    - Make requests
-    - Check result
-    - Override authentication
+  - Make actual request
+  - Check result
+- Django REST Framework APIClient
+  - Based on the Django's TestClient
+  - Make requests
+  - Check result
+  - Override authentication
 - Using the APIClient
-    - import APIClient
-    - Create client
-    - Make request
-    - Check result using assertions
+  - import APIClient
+  - Create client
+  - Make request
+  - Check result using assertions
 
 ## Common testing problems
+
 - Test not running
 - Ran less tests than you have
 - Possible reasons for tests not running
-    - Missing __init__.py in tests/ dir
-    - Indentation of test cases
-    - Missing test prefix for method (all tests methods muss start with test_)
-    - ImportError when running tests
-        - Both tests/ dir and tests.py exist.
+  - Missing __init__.py in tests/ dir
+  - Indentation of test cases
+  - Missing test prefix for method (all tests methods muss start with test_)
+  - ImportError when running tests
+    - Both tests/ dir and tests.py exist.
 
 ## Quiz: TDD with Django
+
 1. How does Django detect tests in our project?
     - By looking for modules which start with "test" (The Django test running will look for modules beginning with "test". For example, this could be a test.py file or tests/test_something.py.)
 2. What is Mocking in the context of writing unit tests?
     - When you override or change behavior of dependencies for testing purposes. (This helps to isolate the code being tested and avoid unintended side effects)
 
 # Section 8:Configure Database
+
 ## Database architecture Overview
+
 - PostgreSQL
-    - Popular open source DB
-    - Integrates well with Django
+  - Popular open source DB
+  - Integrates well with Django
 - Docker Compose
-    - Defined with project (re-usable)
-    - Persistent data using volumes
-    - Handles network configuration
-    - Environment variable configuration
+  - Defined with project (re-usable)
+  - Persistent data using volumes
+  - Handles network configuration
+  - Environment variable configuration
 - Architecture
-    - Docker Compose
-        - Database (PostgreSQL)
-        - App (Django)
+  - Docker Compose
+    - Database (PostgreSQL)
+    - App (Django)
 - Network connectivity
-    - Set depends_on on app service to start db first
-    - Docker compose creates a network
-    - The app service can use db hostname
+  - Set depends_on on app service to start db first
+  - Docker compose creates a network
+  - The app service can use db hostname
 - Volumes
-    - Persistent data
-    - Maps directory in container to local machine
+  - Persistent data
+  - Maps directory in container to local machine
+
 ## Add database service
+
 - Inside docker-compose.yml
+
 1. Add new service for database
      db:
     image: postgres:13-alpine
@@ -531,53 +588,56 @@ Resource : https://github.com/marketplace?type=actions
     (environments muss match database environments )
 
 ## Database configuration with Django
-Resource : https://www.psycopg.org/docs/install.html##build-prerequisites
+
+Resource : <https://www.psycopg.org/docs/install.html##build-prerequisites>
+
 - Configure Django
-    - Tell Django how to connect
+  - Tell Django how to connect
 - Install database adaptor dependencies
-    - Install the toll Django uses to connect
+  - Install the toll Django uses to connect
 - Update Python requirements.txt
 - Django needs to know...
-    - Engine (type of database)
-    - Hostname (IP or Domain name for database)
-    - Port
-    - Database Name
-    - Username
-    - Password
+  - Engine (type of database)
+  - Hostname (IP or Domain name for database)
+  - Port
+  - Database Name
+  - Username
+  - Password
 - All these settings are defined in settings.py
 - Environment variables
-    - Pull config values from environment variables
-    - Easily passed to Docker containers
-    - Used in local dev or prod
-    - Single place to configure project
-    - Easy to do with Python
+  - Pull config values from environment variables
+  - Easily passed to Docker containers
+  - Used in local dev or prod
+  - Single place to configure project
+  - Easy to do with Python
 -Psycopg2
     The package that you need in order for Django to connect to our database.
 - Most popular PostgreSQL adaptor for Python
 - Supported by Django
 - Installation options
-    - psycopg2-binary
-        - OK for development
-        - Not good for production (not optimized for the production operating system)
-    - psycopg2
-        - Compiled from source
-        - Required additional dependencies
-        - easy to install with Docker
+  - psycopg2-binary
+    - OK for development
+    - Not good for production (not optimized for the production operating system)
+  - psycopg2
+    - Compiled from source
+    - Required additional dependencies
+    - easy to install with Docker
 - Install psycopg2
-    - List of package dependencies in docs
-       - C compiler
-       - python3-dev
-       - libpg-dev
-    - Equivalent packages for Alpine
-        - postgresql-client
-        - build-base
-        - postgresql-dev
-        - musl-dev
-    - Found by searching and trial and error
-    - Docker best practice
-        - Clean up build dependencies
+  - List of package dependencies in docs
+    - C compiler
+    - python3-dev
+    - libpg-dev
+  - Equivalent packages for Alpine
+    - postgresql-client
+    - build-base
+    - postgresql-dev
+    - musl-dev
+  - Found by searching and trial and error
+  - Docker best practice
+    - Clean up build dependencies
 
 ## Install PostgreSQL database adaptor
+
 1. In docker File
     1. After install pip -> apk add --update --no-cache postgresql-client && \ (needed to connect to postgresql )
     2. Group packages installed ->  apk add --update --no-cache --virtual .tmp-build-deps \ (used to remove this packages later inside docker file)
@@ -588,10 +648,11 @@ Resource : https://www.psycopg.org/docs/install.html##build-prerequisites
 ## Configure database in Django
 
 - In Django's settings.py File
+
 1. import os (needed to pull environments variables)
 2. Configure Django's DATABASE
 // ## Database
-// ## https://docs.djangoproject.com/en/3.2/ref/settings/##databases
+// ## <https://docs.djangoproject.com/en/3.2/ref/settings/##databases>
 
 DATABASES = {
     'default': {
@@ -610,22 +671,22 @@ HOST,NAME,USER,PASSWORD matchup docker-compose environments
 ## Fixing database race condition
 
 - Problem with Docker compose
-    - using depends_on ensure service starts
-     - doesn't ensure application is running
+  - using depends_on ensure service starts
+  - doesn't ensure application is running
 - Docker services timeline
-    - Django app may connect to DB before database is Ready!
+  - Django app may connect to DB before database is Ready!
 - Solution
-    - Make Django "wait for db"
-        - Check for database availability
-        - COntinue when database ready
-    - Create custom Django management command
+  - Make Django "wait for db"
+    - Check for database availability
+    - COntinue when database ready
+  - Create custom Django management command
 
 - New timeline
-    - Django app waits for database ready.
+  - Django app waits for database ready.
 
 - When is this an issue?
-    - Running docker-compose locally
-    - Running on deployed environment
+  - Running docker-compose locally
+  - Running on deployed environment
 
 ## Create core app
 
@@ -636,9 +697,9 @@ HOST,NAME,USER,PASSWORD matchup docker-compose environments
 
 ## Write test for wait_for_db command
 
-Resource : https://docs.djangoproject.com/en/3.2/howto/custom-management-commands/
-Resource : https://docs.python.org/3/library/unittest.mock.html##unittest.mock.Mock.side_effect
-Resource : https://docs.djangoproject.com/en/3.2/topics/testing/tools/##django.test.SimpleTestCase
+Resource : <https://docs.djangoproject.com/en/3.2/howto/custom-management-commands/>
+Resource : <https://docs.python.org/3/library/unittest.mock.html##unittest.mock.Mock.side_effect>
+Resource : <https://docs.djangoproject.com/en/3.2/topics/testing/tools/##django.test.SimpleTestCase>
 
 (Creating Django custom command is documented in the official documentation of django )
 
@@ -648,9 +709,9 @@ Resource : https://docs.djangoproject.com/en/3.2/topics/testing/tools/##django.t
 4. in Command class define handle
 
 - Add unit test
-    - create py test file for custom commands
-    - Mock behavior of database (@patch('core.management.commands.wait_for_db.Command.check'))
-    - create test method for database ready
+  - create py test file for custom commands
+  - Mock behavior of database (@patch('core.management.commands.wait_for_db.Command.check'))
+  - create test method for database ready
       def test_wait_for_db_ready(self, patched_check):
         """Test waiting for database if database ready."""
         patched_check.return_value = True
@@ -658,12 +719,12 @@ Resource : https://docs.djangoproject.com/en/3.2/topics/testing/tools/##django.t
         call_command('wait_for_db')
 
         patched_check.assert_called_once_with(database=['default'])
-    - create test method for database fail
+  - create test method for database fail
      @patch('time.sleep')
     def test_wait_for_db_delay(self, patched_sleep, patched_check):
         """Test waiting for database when getting OperationError."""
-        patched_check.side_effect = [Psycopq2Error] * 2 + \
-            [OperationalError] * 3 + [True]
+        patched_check.side_effect = [Psycopq2Error] *2 + \
+[OperationalError]* 3 + [True]
 
         call_command('wait_for_db')
 
@@ -690,15 +751,16 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS('Database available!'))
 
 - Temporarily Suppress Linting for unused imports
-    - add after unused import ## noqa (tells flake8 to ignore line error)
+  - add after unused import ## noqa (tells flake8 to ignore line error)
 
 ## Database migrations
+
 - Django ORM
-    - Object Relational Mapper (ORM)
-    - Abstraction layer for data
-        - Django handles database structure and changes
-        - Focus on Python code
-        - Use any database (within reason)
+  - Object Relational Mapper (ORM)
+  - Abstraction layer for data
+    - Django handles database structure and changes
+    - Focus on Python code
+    - Use any database (within reason)
 
 - Using the ORM
     1. Define models
@@ -707,12 +769,12 @@ class Command(BaseCommand):
     4. Store data
 
 - Models
-    - Each model maps to a table
-    - Models contain
-        - Names
-        - Fields
-        - Other metadata
-        - Custom Python logic
+  - Each model maps to a table
+  - Models contain
+    - Names
+    - Fields
+    - Other metadata
+    - Custom Python logic
 
 - Model general Example
 class Ingredient(models.Model):
@@ -724,14 +786,14 @@ class Ingredient(models.Model):
    )
 
 - Creating migrations
-    - Ensure app is enabled in settings.py
-    - Use Django CLI
-        - command : python manage.py makemigrations
+  - Ensure app is enabled in settings.py
+  - Use Django CLI
+    - command : python manage.py makemigrations
 
 - Applying migrations
-    - Use Django CLI
-        - command : python manage.py migration
-    - Run it after waiting for database (best practice)
+  - Use Django CLI
+    - command : python manage.py migration
+  - Run it after waiting for database (best practice)
 
 ## Update Docker Compose and CI/CD configuration
 
@@ -754,74 +816,74 @@ class Ingredient(models.Model):
 ## The Django user model
 
 - Django authentication
-    - Built in authentication system
-    - Framework for basic features
-        - Registration
-        - Login
-        - Auth
-    - Integrates with Django admin
+  - Built in authentication system
+  - Framework for basic features
+    - Registration
+    - Login
+    - Auth
+  - Integrates with Django admin
 
 - Django user model
-    - Foundation of the Django auth system
-    - Default user model
-        - Username instead of email
-        - Not easy to customize
-    - Create a custom model for new projects (easer to customize later)
-        - Allows for using email instead of username
-        - Future proof project for later changes to user model
+  - Foundation of the Django auth system
+  - Default user model
+    - Username instead of email
+    - Not easy to customize
+  - Create a custom model for new projects (easer to customize later)
+    - Allows for using email instead of username
+    - Future proof project for later changes to user model
 
 - How to customize user model
-    - Create model
-        - Base from AbstractBaseUser and PermissionsMixin
-    - Create custom manager
-        - Used for CLI integration
-    - Set AUTH_USER_MODEL in settings.py
-    - Create and run migrations
+  - Create model
+    - Base from AbstractBaseUser and PermissionsMixin
+  - Create custom manager
+    - Used for CLI integration
+  - Set AUTH_USER_MODEL in settings.py
+  - Create and run migrations
 
 - AbstractBaseUser
-    - Provides features for authentication
-    - Doesn't include fields
+  - Provides features for authentication
+  - Doesn't include fields
 
 - PermissionsMixin
-    - Support for Django permission system
-    - Includes fields and methods
+  - Support for Django permission system
+  - Includes fields and methods
 
 - Common Issues
-    - Running migrations before setting custom model
-        - Set custom model first
-    - Typos in config
-    - Indentation in manager or model
+  - Running migrations before setting custom model
+    - Set custom model first
+  - Typos in config
+  - Indentation in manager or model
 
 ## Design custom user model
 
 - User fields
-    - email(EmailField)
-    - name(CharField)
-    - is_active(BooleanField)
-    - is_staff(BooleanField)
+  - email(EmailField)
+  - name(CharField)
+  - is_active(BooleanField)
+  - is_staff(BooleanField)
 - User model manager
-    - Used to manage objects
-    - Custom logic for creating objects
-        - Hash password
-    - Used by Django CLI
-        - Create superuser
+  - Used to manage objects
+  - Custom logic for creating objects
+    - Hash password
+  - Used by Django CLI
+    - Create superuser
 
 - BaseUserManager
-    - Base class for managing users
-    - Useful helper methods
-        - normalize_email : for storing emails consistently
-    - Methods we'll define
-        - create_user : called when creating user
-        - create_superuser : used by ht eCLI to create a superuser (Admin)
+  - Base class for managing users
+  - Useful helper methods
+    - normalize_email : for storing emails consistently
+  - Methods we'll define
+    - create_user : called when creating user
+    - create_superuser : used by ht eCLI to create a superuser (Admin)
 
 ## Add user model tests
-Resource : https://docs.djangoproject.com/en/3.2/topics/auth/customizing/##django.contrib.auth.get_user_model
-Resource : https://docs.djangoproject.com/en/3.2/topics/auth/customizing/##django.contrib.auth.models.AbstractBaseUser.check_password
+
+Resource : <https://docs.djangoproject.com/en/3.2/topics/auth/customizing/##django.contrib.auth.get_user_model>
+Resource : <https://docs.djangoproject.com/en/3.2/topics/auth/customizing/##django.contrib.auth.models.AbstractBaseUser.check_password>
 
 1. Add test_models.py
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-
 
 class ModelTests(TestCase):
     """Test models."""
@@ -842,7 +904,7 @@ class ModelTests(TestCase):
 
 ## Implement custom user model
 
-Resource : https://docs.djangoproject.com/en/3.2/ref/settings/##auth-user-model
+Resource : <https://docs.djangoproject.com/en/3.2/ref/settings/##auth-user-model>
 
 1. Clear out models.py
 2. Create custom user model
@@ -860,7 +922,7 @@ class UserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_field):
         """Create, save and return a new user."""
-        user = self.model(email=email, **extra_fields)
+user = self.model(email=email,**extra_fields)
         user.set_password(password)
         user.save(using=self._db)
 
@@ -882,7 +944,7 @@ django.db.migrations.exceptions.InconsistentMigrationHistory: Migration admin.00
 
 - Run test to check that they pass
 
-## Normalize user email.
+## Normalize user email
 
 - Add test_normalize_user :
 def test_new_user_email_normalized(self):
@@ -897,17 +959,17 @@ def test_new_user_email_normalized(self):
             user = get_user_model().objects.create_user(email, 'sample123')
             self.assertEqual(user.email, expected)
 
-
 - Add normalize_email on create user :
 def create_user(self, email, password=None, **extra_fields):
         """Create, save and return a new user."""
-        user = self.model(email=self.normalize_email(email), **extra_fields)
+user = self.model(email=self.normalize_email(email),**extra_fields)
         user.set_password(password)
         user.save(using=self._db)
 
         return user
 
 ## Require email input
+
 - create test
 def test_new_user_without_email_raises_error(self):
         """Test that creating a user without an email raises a ValueError."""
@@ -921,13 +983,14 @@ class UserManager(BaseUserManager):
         """Create, save and return a new user."""
         if not email:
             raise ValueError('User must have an email address.')
-        user = self.model(email=self.normalize_email(email), **extra_fields)
+user = self.model(email=self.normalize_email(email),**extra_fields)
         user.set_password(password)
         user.save(using=self._db)
 
         return user
 
 ## Add superuser support
+
 - create test
 def test_create_superuser(self):
         """Test creating a superuser."""
@@ -949,42 +1012,45 @@ def create_superuser(self, email, password):
         return user
 
 ## Test user model
+
 - create superuser credentials using CLI
-    - command : docker-compose run --rm app sh -c "python manage.py createsuperuser"
+  - command : docker-compose run --rm app sh -c "python manage.py createsuperuser"
 - run the app
-    - command : docker-compose up
-- open browser at http://127.0.0.1:8000/admin/
+  - command : docker-compose up
+- open browser at <http://127.0.0.1:8000/admin/>
 - enter superuser credentials
 
 ## Setup Django Admin
+
 - Django Admin is a Graphical User Interface for models
-    - Create, Read, Update, Delete
+  - Create, Read, Update, Delete
 - Very little coding required
 
 ## Enable Django admin
+
 - Enable per model
 - Inside admin.py
-    - admin.site.register(YourModel)
+  - admin.site.register(YourModel)
 
 - Customizing
-    - Create class based off ModelAdmin or UserAdmin
-    - Override/set class variables
+  - Create class based off ModelAdmin or UserAdmin
+  - Override/set class variables
 
 - Changing list of objects
-    - ordering : changes order items appear
-    - list_display : fields to appear in list
+  - ordering : changes order items appear
+  - list_display : fields to appear in list
 
 - Add/update page
-    - fieldsets: control layout of page
-    - readonly_fields : fields that cannot be changed
+  - fieldsets: control layout of page
+  - readonly_fields : fields that cannot be changed
 
 - Add page
-    - add_fieldsets : fields displayed only on add page
+  - add_fieldsets : fields displayed only on add page
 
 ## Write tests for listing users
 
-Resource : https://docs.djangoproject.com/en/3.2/topics/testing/tools/##overview-and-a-quick-example
-Resource : https://docs.djangoproject.com/en/3.1/ref/contrib/admin/##reversing-admin-urls
+Resource : <https://docs.djangoproject.com/en/3.2/topics/testing/tools/##overview-and-a-quick-example>
+Resource : <https://docs.djangoproject.com/en/3.1/ref/contrib/admin/##reversing-admin-urls>
 
 - create test_admin.py
 - create adminsitetests class
@@ -1014,6 +1080,7 @@ class AdminSiteTests(TestCase):
         self.assertContains(res, self.user.email)
 
 ## Make Django admin list users
+
 - inside core app open admin.py and clear file
 - add following
 """
@@ -1024,16 +1091,15 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin (used default d
 
 from core import models
 
-
 class UserAdmin(BaseUserAdmin):
     """Define the admin pages for users."""
     ordering = ['id']
     list_display = ['email', 'name'] ## type: ignore
 
-
 admin.site.register(models.User, UserAdmin)
 
 ## Support modifying users
+
 - add test
 def test_edit_user_page(self):
         """Test the edit user page works."""
@@ -1042,9 +1108,9 @@ def test_edit_user_page(self):
 
         self.assertEqual(res.status_code, 200)
 - implement feature
-    - integrate translation
+  - integrate translation
     from django.utils.translation import gettext_lazy as _
-    - update UserAdmin
+  - update UserAdmin
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         (
@@ -1062,6 +1128,7 @@ def test_edit_user_page(self):
     readonly_fields = ['last_login']
 
 ## Support creating users in Django admin
+
 - create test
 def test_create_user_page(self):
         """Test to create user page works."""
@@ -1086,77 +1153,80 @@ add_fieldsets = (
    )
 
 ## API Documentation
+
 - Importance
     -APIs are designed for developers to use
-    - Need to know how to use it
-    - An API is only as good as its documentation
+  - Need to know how to use it
+  - An API is only as good as its documentation
 
 - What to document
-    - Everything needed to use the API
-    - Available endpoints (paths)
-        - /api/recipes (example)
-    - Supported methods
-        - GET, POST, PUT, PATCH, DELETE
-    - Format of payloads (inputs)
-        - Parameters
-        - Post JSON format
-    - Format of responses(outputs)
-        - Response JSON format
-    - Authentication process
+  - Everything needed to use the API
+  - Available endpoints (paths)
+    - /api/recipes (example)
+  - Supported methods
+    - GET, POST, PUT, PATCH, DELETE
+  - Format of payloads (inputs)
+    - Parameters
+    - Post JSON format
+  - Format of responses(outputs)
+    - Response JSON format
+  - Authentication process
 
 - Options for documentation
-    - Manual
-        - Word doc
-        - Markdown
-        - Drawback (manually maintained)
-    - Automated
-        - Use metadata from code (comments)
-        - Generate documentation pages
+  - Manual
+    - Word doc
+    - Markdown
+    - Drawback (manually maintained)
+  - Automated
+    - Use metadata from code (comments)
+    - Generate documentation pages
 
 ## Auto docs with DRF (Django REST Framework)
+
 - Auto generate docs (with third party library)
-    - drf-spectacular
+  - drf-spectacular
 - Generates schema (Document format JSON or YAML)
 - Browsable web interface
-    - Make test requests
-    - Handle auth
+  - Make test requests
+  - Handle auth
 
 - How it works
     1. Generate "schema" file
     2. Parse schema into GUI
 - OpenAPI Schema
-    - Standard for describing APIs
-    - Popular in industry
-    - Supported by most API documentation tools
-    - Uses popular formats: YAML/JSON
+  - Standard for describing APIs
+  - Popular in industry
+  - Supported by most API documentation tools
+  - Uses popular formats: YAML/JSON
 
 ## Quiz : Documentation
+
 - What should you include in your API documentation?
-    - Everything needed to use your API (That’s right, ideally your documentation includes everything a developer would need to consume your API.)
+  - Everything needed to use your API (That’s right, ideally your documentation includes everything a developer would need to consume your API.)
 - What is an API schema used for?
-    - Opening up in tools (eg: Swagger) which can convert it into human readable docs. (The schema file is designed to be loaded into other tools to generate docs.)
+  - Opening up in tools (eg: Swagger) which can convert it into human readable docs. (The schema file is designed to be loaded into other tools to generate docs.)
 
 ## Install drf-spectacular
 
-Resource : https://drf-spectacular.readthedocs.io/en/latest/index.html
-Resource : https://pypi.org/project/drf-spectacular/
-Resource : https://drf-spectacular.readthedocs.io/en/latest/readme.html##installation
+Resource : <https://drf-spectacular.readthedocs.io/en/latest/index.html>
+Resource : <https://pypi.org/project/drf-spectacular/>
+Resource : <https://drf-spectacular.readthedocs.io/en/latest/readme.html##installation>
 
 - add it to  requirements.txt (drf-spectacular>=0.15.1,<0.16)
 - run docker-compose build to make sure drf-spectacular gets installed
 - in app/settings.py
-    - in installed_apps add :
-        - 'rest_framework',
-        - 'drf_spectacular',
+  - in installed_apps add :
+    - 'rest_framework',
+    - 'drf_spectacular',
 - configure rest_framework to generate the schema using drf-spectacular
-    - at settings.py bottom add
-        - REST_FRAMEWORK = {
+  - at settings.py bottom add
+    - REST_FRAMEWORK = {
             'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
         }
 
 ## Configure URLS to serve the documentation
 
-Resource : https://drf-spectacular.readthedocs.io/en/latest/readme.html##take-it-for-a-spin
+Resource : <https://drf-spectacular.readthedocs.io/en/latest/readme.html##take-it-for-a-spin>
 
 - add urls to schema and docs in urls.py
     from drf_spectacular.views import (
@@ -1178,34 +1248,37 @@ urlpatterns = [
 
 ## Test Swagger UI
 
- - start server : docker-compose up
- - navigate to 127.0.0.1:8000/api/docs
+- start server : docker-compose up
+- navigate to 127.0.0.1:8000/api/docs
 
 ## Build user API
+
 - User API
-    - User registration
-    - Create auth token
-    - Viewing/updating profile
+  - User registration
+  - Create auth token
+  - Viewing/updating profile
 
 - Endpoints
-    - user/create/
-        - POST Register new user
-    - user/token/
-        - POST - Create new token
-    - user/me
-        - PUT/PATCH - Update profile
-        - GET - View profile
+  - user/create/
+    - POST Register new user
+  - user/token/
+    - POST - Create new token
+  - user/me
+    - PUT/PATCH - Update profile
+    - GET - View profile
 
 ## Create user app
+
 - command :  docker-compose run --rm app -c "python manage.py startapp user"
 - change standard folder to :
-    - folder tests
-        - __ini__.py
-    - apps.py
-    - views.py
+  - folder tests
+    - __ini__.py
+  - apps.py
+  - views.py
 - add user app to settings.py
 
 ## Write test for create user API
+
 - inside user tests create file test_user_api.py
 - add following
 
@@ -1220,14 +1293,11 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework import status
 
-
 CREATE_USER_URL = reverse('user:create')
-
 
 def create_user(**params):
     """Create and return a new user."""
     return get_user_model().objects.create_user(**params)
-
 
 class PublicUserApiTests(TestCase):
     """Test the public features of the user API."""
@@ -1274,16 +1344,16 @@ class PublicUserApiTests(TestCase):
         self.assertFalse(user_exists)
 
 ## Implement create user API
+
 - add new serializer for creating objects
-    - create serializers.py
-    - add following
+  - create serializers.py
+  - add following
 """
 Serializers for the user API View.
 """
 from django.contrib.auth import get_user_model
 
 from rest_framework import serializers
-
 
 class UserSerializer(serializers.ModelSerializer):
     """Serializer for the user object."""
@@ -1305,14 +1375,13 @@ from rest_framework import generics
 
 from user.serializers import UserSerializer
 
-
 class CreateUserView(generics.CreateAPIView):
     """Create a new user in the system."""
     serializer_class = UserSerializer
 
 - Wire up this view to a url
-    - create urls.py in user app
-    - add following
+  - create urls.py in user app
+  - add following
 """
 URL mappings for the user API.
 """
@@ -1333,21 +1402,22 @@ urlpatterns = [
 - connect view in main app
  path('api/user/', include('user.urls')),
 
- ## Authentication
+## Authentication
+
 - Types
-    - Basic
-        - Send username and password with each request (not recommended)
-    - Token
-        - Use a token in the http header
-    - JSON Web Token (JWT)
-        - Use an access and refresh token (mostly used on big databases)
-    - Session
-        - Use cookies (common)
+  - Basic
+    - Send username and password with each request (not recommended)
+  - Token
+    - Use a token in the http header
+  - JSON Web Token (JWT)
+    - Use an access and refresh token (mostly used on big databases)
+  - Session
+    - Use cookies (common)
 
 - Token authentication
-    - Balance of simplicity and security
-    - Supported out of box by DRF
-    - Well support by most clients
+  - Balance of simplicity and security
+  - Supported out of box by DRF
+  - Well support by most clients
 
 - How it works
     1. Create token (post username/password)
@@ -1355,30 +1425,32 @@ urlpatterns = [
     3. Include token in http headers
 
 - Pros and cons
-    - Pros
-        - Supported out of the box
-        - Simple to use
-        - Supported ny all clients
-        - Avoid sending username/password each time
-    - Cons
-        - Token needs to be secure on client side
-        - Requires database requests
+  - Pros
+    - Supported out of the box
+    - Simple to use
+    - Supported ny all clients
+    - Avoid sending username/password each time
+  - Cons
+    - Token needs to be secure on client side
+    - Requires database requests
 
 - Logging out
-    - Happens on the client side
-    - Delete token
+  - Happens on the client side
+  - Delete token
 
 - Why no logout API?
-    - Unreliable
-        - No guarantee it will be called
-    - Not useful on API
+  - Unreliable
+    - No guarantee it will be called
+  - Not useful on API
 
 ## Quiz Authentication
+
 1. What is a drawback of using Basic authentication?
     - It requires the client stores the user username and password
     (This is not ideal because it means an attacker could retrieve the user's credentials in clear text.)
 
 ## Write tests fot token API
+
     - add tests to user test api file
 def test_create_token_for_user(self):
         """Test generates token for valid credentials."""
@@ -1417,6 +1489,7 @@ def test_create_token_for_user(self):
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
 
 ## Implement Token API
+
 1. settings.py add in INSTALLED_APPS 'rest_framework.authtoken',
 2. Create new serializer
 
@@ -1442,6 +1515,7 @@ class AuthTokenSerializer(serializers.Serializer):
             raise serializers.ValidationError(msg, code='authorization')
         attrs['user'] = user
         return attrs
+
 - And update imports
 from django.contrib.auth import (
     get_user_model,
@@ -1455,6 +1529,7 @@ class CreateTokenView(ObtainAuthToken):
     """Create a new auth token for user."""
     serializer_class = AuthTokenSerializer
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
+
 - Update imports
 from rest_framework import generics
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -1468,6 +1543,7 @@ from user.serializers import (
   path('token/', views.CreateTokenView.as_view(), name='token'),
 
 ## Write test for manage user API
+
 - add ME_URL = reverse('user:me')
 - add tests
     def test_retrieve_user_unauthorized(self):
@@ -1475,7 +1551,6 @@ from user.serializers import (
         res = self.client.get(ME_URL)
 
         self.assetEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
-
 
 class PrivateUSerApiTests(TestCase):
     """Test API request that require authentication."""
@@ -1515,7 +1590,9 @@ class PrivateUSerApiTests(TestCase):
         self.assertEqual(self.user_name, payload['name'])
         self.assertEqual(self.user.check_password(payload['password']))
         self.assertEqual(res.status_code, status.HTTP_200_OK)
+
 ## Implement manage user API
+
 - override update in serializer
 def update(self, instance, validated_data):
         """Update and return user."""
@@ -1539,107 +1616,146 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
         return self.request.user
 
 ## Recipe API Design
+
 - Features
-    - Create
-    - List
-    - View details
-    - Update
-    - Delete
+  - Create
+  - List
+  - View details
+  - Update
+  - Delete
 - Endpoints
-    - /recipes/
-        - GET - list all recipes
-        - POST - Create recipe
-    - /recipes/<recipe_id>
-        - GET - View details of recipe
-        - PUT/PATCH - Update recipe
-        - DELETE - Delete recipe
+  - /recipes/
+    - GET - list all recipes
+    - POST - Create recipe
+  - /recipes/<recipe_id>
+    - GET - View details of recipe
+    - PUT/PATCH - Update recipe
+    - DELETE - Delete recipe
 
 ## APIView vs ViewSets
+
 - What is a view?
-    - Handles a request made to a URL
-    - Django uses functions
-    - DRF uses classes
-        - Reusable logic
+  - Handles a request made to a URL
+  - Django uses functions
+  - DRF uses classes
+    - Reusable logic
         Override behaviour
-    - DRF also supports decorators
-    - APIView and Viewsets = DRF base classes
+  - DRF also supports decorators
+  - APIView and Viewsets = DRF base classes
 
 - APIView
-    - Focused around HTTP methods
-    - Class methods for HTTP methods
-        - GET, POST, PUT, PATCH, DELETE
-    - Provide flexibility over URLs and logic
-    - Useful for non CRUD APIs
-        - Avoid for simple Create, Read, Update, Delete APIs
-        - Bespoke logic (eg: auth, jobs, external apis)
+  - Focused around HTTP methods
+  - Class methods for HTTP methods
+    - GET, POST, PUT, PATCH, DELETE
+  - Provide flexibility over URLs and logic
+  - Useful for non CRUD APIs
+    - Avoid for simple Create, Read, Update, Delete APIs
+    - Bespoke logic (eg: auth, jobs, external apis)
 
 - Viewsets
-    - Focused around actions
-        - Retrieve, list, update, partial update, destroy
-    - Map to Django models
-    - Use Routers to generate URLs
-    - Great for CRUD operations on models
+  - Focused around actions
+    - Retrieve, list, update, partial update, destroy
+  - Map to Django models
+  - Use Routers to generate URLs
+  - Great for CRUD operations on models
 
 ## Write test for recipe model
+
 commit d66e4d01ab6e6e756d717f397e6ebdc41135125c
+
 ## Implement recipe model
+
 - ForeignKey allows to set up a relationship between this recipe model and another model
-    - Best practice is to reference it from the settings
+  - Best practice is to reference it from the settings
 - Make migrations
-    - command : docker-compose run --rm app sh -c "python manage.py makemigrations"
+  - command : docker-compose run --rm app sh -c "python manage.py makemigrations"
 commit 0f1a842620f5c5ea22020ecb9d137e690e478e7b
+
 ## Create recipe app
+
 - Create recipe app command : docker-compose run --rm app sh -c "python manage.py startapp recipe"
 commit b87b6c0711de91277b79ddcbfd121d67d7786129
+
 ## Write tests for listing recipes
+
 commit e64343ee245df27d34de745a268c050256e864ac
+
 ## Implement recipe listing
+
 commit d6eaa52ff8b0066e955e78a878a9318e83bd98dc
+
 ## Write tests for recipe details API
+
 commit c9ec699e3e8ea38e1fac8a3d9ab8284cdb804aff
+
 ## Implement recipe detail API
-Resource : https://www.django-rest-framework.org/api-guide/generic-views/##get_serializer_classself
+
+Resource : <https://www.django-rest-framework.org/api-guide/generic-views/##get_serializer_classself>
 commit 15ccaac4d7e1cdafc6b7bb0f5d2a80c1dea8635a
+
 ## Write test for creating recipes
-Resource : https://docs.python.org/3/library/functions.html##getattr
+
+Resource : <https://docs.python.org/3/library/functions.html##getattr>
 commit bc512f7bc5eea9148ede43a0979e72ef9cb53f83
+
 ## Implement create recipe API
-Resource : https://www.django-rest-framework.org/api-guide/generic-views/##get_serializer_classself
+
+Resource : <https://www.django-rest-framework.org/api-guide/generic-views/##get_serializer_classself>
 commit b67f3370173e5f577303585f7a13ba61d1c4fd31
+
 ## Add additional tests
+
 commit a5045fe4cf9d3b48f5b4a83a3852ac778438928e
+
 ## Tags API Design
+
 - Add ability to add recipe tags
 - Create model for tags
 - Add tag API endpoints
 - Update recipe endpoint
-    - Adding and listing tags
+  - Adding and listing tags
 
 - Tag Model
-    - name
-    - user
-    - Endpoints
-        - api/recipe/tags
-            - POST, PUT/PATCH, DELETE, GET
+  - name
+  - user
+  - Endpoints
+    - api/recipe/tags
+      - POST, PUT/PATCH, DELETE, GET
+
 ## Add Tag model
+
 - After creating the tests and the model, makemigrations : docker-compose run --rm app sh -c "python manage.py makemigrations"
 commit 8da792ff092eea990e1dd89f0ec8badf63fb627a
+
 ## Write tests for listing tags
+
 commit 0be43d2b81c556115a075b50672b582bcfad60b6
+
 ## Implement tag listing API
+
 commit 56f790f8b883f252388024e72a180924edeb7fdd
+
 ## Write tests for updating tags
+
 commit 67a3d08c77da09b0df4f4fc27b901502a3d09e07
+
 ## Implement update tag API
+
 commit 7349ee5b9395b64e3f0f10f97261a431d4ff029a
+
 ## Write tests for deleting tags
+
 commit 576387112eae6d1f992045bc41f68a6b47839cd9
+
 ## Implement delete tag API
+
 commit 2bc6251880e37af0147021429da2dcfb79daf37d
+
 ## Nested serializers
+
 - What are nested serializers?
-    - Serializer within a serializer
-    - Used for fields which are objects
+  - Serializer within a serializer
+  - Used for fields which are objects
 - Example nested data
 {
     "title": "Some title",
@@ -1650,91 +1766,134 @@ commit 2bc6251880e37af0147021429da2dcfb79daf37d
     ]
 }
 - Limitations
-    - Read only by default
-    - Custom logic to make writable
+  - Read only by default
+  - Custom logic to make writable
+
 ## Write tests for creating tags
+
 commit 2b4a3e3981e0f5fe8d68e3e66f102b02f233d80a
+
 ## Implement create tag feature
+
 commit 42554b05bdbbb53a8fe7de22c4cb06f1d0040bfa
-Resource : https://www.django-rest-framework.org/api-guide/relations/##writable-nested-serializers
-Resource : https://www.django-rest-framework.org/api-guide/serializers/##saving-instances
+Resource : <https://www.django-rest-framework.org/api-guide/relations/##writable-nested-serializers>
+Resource : <https://www.django-rest-framework.org/api-guide/serializers/##saving-instances>
+
 ## Write tests for updating recipe tags
+
 commit 2e1034647a156b5031ecb061eb645d56d6fe0ef2
+
 ## Implement update recipe tags feature
+
 commit 85a6077e9fae21e38698756fd0229ab7bf1c10c7
+
 ## Review tags API in browser
+
 1. Restart / Start dev-server to auto makemigrations.
     - command : docker-compose up
 2. Authenticate via Post User API
 3. Login via Get Token API
 4. Authorize via Token
 5. Test APIs
+
 ## Summary
+
 - Implemented tag model
 - Added tags API
 - Updated recipe endpoint to use tags
 
 # Section 15:Build ingredients API
+
 ## Ingredients API Design
+
 - Ability to add ingredients to recipes
 - Create model for ingredients
 - Add ingredients API
 - Update recipe endpoint
-    - Create ingredient
-    - Manage ingredients
+  - Create ingredient
+  - Manage ingredients
 - Ingredients Model
-    - name
-    - user - Owns ingredient
+  - name
+  - user - Owns ingredient
 - Ingredients Endpoint
-    - /api/recipe/ingredients
-        - GET - List ingredients
-    - /api/recipe/ingredients/<id>/
-        - GET - Get ingredients details
-        - PUT/PATCH - Update ingredient
-        - DELETE - Remove ingredient
-    - /api/recipe/
-        - POST - Create ingredients(as part of recipe)
-    - /api/recipe/<id>/
-        - PUT/PATCH - Create or modify ingredients
+  - /api/recipe/ingredients
+    - GET - List ingredients
+  - /api/recipe/ingredients/<id>/
+    - GET - Get ingredients details
+    - PUT/PATCH - Update ingredient
+    - DELETE - Remove ingredient
+  - /api/recipe/
+    - POST - Create ingredients(as part of recipe)
+  - /api/recipe/<id>/
+    - PUT/PATCH - Create or modify ingredients
+
 ## Add ingredient model
+
 - After creating the model create migrations
-    - command : docker-compose run --rm app sh -c "python manage.py makemigrations"
+  - command : docker-compose run --rm app sh -c "python manage.py makemigrations"
 commit e7e46369091993f0cc822618be3ebc1cb0624b07
+
 ## Write tests for listing ingredients
+
 commit 79e135870445e22d231df6438afafc13987b52b2
+
 ## Implement ingredient listing API
+
 commit 27968886f5d82ccc325333f732069cd8444a1c44
+
 ## Write tests for updating ingredients
+
 commit 08968c4269ca2682332da787fd310857a5aa8b92
-##  Implement update ingredient API
+
+## Implement update ingredient API
+
 commit c5db2248403cf462187e77401335b049643834c9
+
 ## Write tests for deleting ingredients
+
 commit 9607937b803db780cfa7b7c21f841ef831ef769f
+
 ## Implement delete ingredient API
+
 commit 1656757acfeafa7fc0661e0c8166e7aab60f42af
+
 ## Write tests for creating ingredients
+
 commit 94d43a2efff845aa8b831fc49643939b300b9002
+
 ## Implement create ingredients feature
+
 commit 64bf8ff7d76a26e26d565401ca6f3ea6d563a18e
+
 ## Write tests for updating recipe ingredients
+
 commit 52eb4268ff07b796059e79ebe3b48fe7149f87df
+
 ## Implement update recipe ingredients feature
+
 commit 1b91c8da8337e97f6f719c134bdb15f77515713b
+
 ## Refactoring
+
 - What is refactoring?
-    - Restructure code
-        - Easier to read
-        - More efficient
-        - Less Duplication
-    - Improve performance
-    - Does the same thing
+  - Restructure code
+    - Easier to read
+    - More efficient
+    - Less Duplication
+  - Improve performance
+  - Does the same thing
 - TDD Refactoring
-    - TDD makes refactoring easy
-    - Run test to ensure code still works
+  - TDD makes refactoring easy
+  - Run test to ensure code still works
+
 ## Refactoring recipe views
+
 commit d2f57bb3ead3d3cb733a9281082fb0ed0dc86edf
+
 ## Review ingredient API in browser
+
 ## Summary
+
 - Added ingredients model
 - Implemented ingredients API
 - Updated recipe API
@@ -1742,74 +1901,84 @@ commit d2f57bb3ead3d3cb733a9281082fb0ed0dc86edf
 - Tested in browser
 
 # Section 16: Recipe image API
+
 ## Recipe image API design
+
 - Handling static/media files
 - Adding image dependencies
 - Update recipe model with image field
 - Add image upload endpoint
 - Image API Design
-    - /api/recipe/<id>/upload-image/
-        - POST - Upload image
+  - /api/recipe/<id>/upload-image/
+    - POST - Upload image
 - Additional dependencies
-    - Pillow (Python Imaging Library)
-        - zlib, zlib-dev
-        - jpeg-dev
+  - Pillow (Python Imaging Library)
+    - zlib, zlib-dev
+    - jpeg-dev
+
 ## Add image handling dependencies
+
 commit 209c630561b3559f848a6befd0344201f8e8ad52
+
 - Rebuild docker images command : docker-compose build
+
 ## Static files with Django and Docker
-Resource : https://docs.djangoproject.com/en/3.2/howto/static-files/
-Resource : https://docs.djangoproject.com/en/3.2/howto/static-files/
+
+Resource : <https://docs.djangoproject.com/en/3.2/howto/static-files/>
+Resource : <https://docs.djangoproject.com/en/3.2/howto/static-files/>
+
 - Media and Static
-    - Files not generated by Python code
-        - Images, CSS, Javascript, Icons
-    - Two types:
-        - Media - Uploaded at runtime (eg: user uploads)
-        - Static - Generated on Build (indirect used static file are for eg: django admin, or django rest framework browsable interface)
+  - Files not generated by Python code
+    - Images, CSS, Javascript, Icons
+  - Two types:
+    - Media - Uploaded at runtime (eg: user uploads)
+    - Static - Generated on Build (indirect used static file are for eg: django admin, or django rest framework browsable interface)
 - Configuration
-    - STATIC_URL - Base static URL on web browser (eg: /static/static)
-    - MEDIA_URL - Base media URL on web browser (eg: /static/media/)
-    - MEDIA_ROOT - Path to media on filesystem (eg: /vol/web/media)
-    - STATIC_ROOT - Path to static files on filesystem (eg: /vol/web/static)
+  - STATIC_URL - Base static URL on web browser (eg: /static/static)
+  - MEDIA_URL - Base media URL on web browser (eg: /static/media/)
+  - MEDIA_ROOT - Path to media on filesystem (eg: /vol/web/media)
+  - STATIC_ROOT - Path to static files on filesystem (eg: /vol/web/static)
 - Docker volumes
-    - Store persistent data (a directory on the system that is used and maps to our application) that persist between different runs or even different running instances in app
-    - Volume we'll setup:
-        - /vol/we - store static and media subdirectories
+  - Store persistent data (a directory on the system that is used and maps to our application) that persist between different runs or even different running instances in app
+  - Volume we'll setup:
+    - /vol/we - store static and media subdirectories
 - Mapping (Django development)
-    - A Development Server is used
-    - Django make it easy to use static files
+  - A Development Server is used
+  - Django make it easy to use static files
 - Mapping (Django deployed)
-    - Typically you need to use a Proxy
-        - Recommended is to use NGINX ( Reverse Proxy Service )
-        - Proxy is used to handle all static file in the system
+  - Typically you need to use a Proxy
+    - Recommended is to use NGINX ( Reverse Proxy Service )
+    - Proxy is used to handle all static file in the system
 - Collect Static
-    - Django provides command to gather static files
-        - command python manage.py collectstatic
-    - Puts all static files to STATIC_ROOT
-        - On Served Deployed Apps you need to have all static files together so that they can be served by the reverse proxy service (because you will not use django development server in production )
+  - Django provides command to gather static files
+    - command python manage.py collectstatic
+  - Puts all static files to STATIC_ROOT
+    - On Served Deployed Apps you need to have all static files together so that they can be served by the reverse proxy service (because you will not use django development server in production )
+
 ## Configure our project to use static files
+
 - Change Docker file to support handling our URL
-    - Create directories to store out media files (after creating the user in docker file so that they are not created under root user)
-    - command : mkdir -p /vol/web/media
-    - command : mkdir -p /vol/web/static && \ (creates all subdirectories in specified path)
-    - directories to map to volumes used to store out static and media files
-    - command : chown -R django-user:django-user /vol && \ (change the owner of directory and subdirectories )
-    - command : chmod -R 755 /vol (change permissions that group and owner can any changes)
+  - Create directories to store out media files (after creating the user in docker file so that they are not created under root user)
+  - command : mkdir -p /vol/web/media
+  - command : mkdir -p /vol/web/static && \ (creates all subdirectories in specified path)
+  - directories to map to volumes used to store out static and media files
+  - command : chown -R django-user:django-user /vol && \ (change the owner of directory and subdirectories )
+  - command : chmod -R 755 /vol (change permissions that group and owner can any changes)
 - Update Docker Compose YML file
-    - Add new volume (dev-static-data)
-    - Map the volume to app specific location
-        - dev-static-data:/vol/web
-    - This is to have persistent data when we developing on our local machine
+  - Add new volume (dev-static-data)
+  - Map the volume to app specific location
+    - dev-static-data:/vol/web
+  - This is to have persistent data when we developing on our local machine
 - Update settings.py file
-    - Add URLS and ROOTS paths
+  - Add URLS and ROOTS paths
         STATIC_URL = '/static/static'
         MEDIA_URL = '/static/media/'
 
         MEDIA_ROOT = '/vol/web/media'
         STATIC_ROOT = '/vol/web/static/'
 - Update urls.py file
-    - Add supporting media file with our development server
-    - Mimic the behavior that we expect when we are using our django development server allowing it to serve media files
+  - Add supporting media file with our development server
+  - Mimic the behavior that we expect when we are using our django development server allowing it to serve media files
     <code>
     if setting.DEBUG:
     urlpatterns += static(
@@ -1818,221 +1987,285 @@ Resource : https://docs.djangoproject.com/en/3.2/howto/static-files/
     )
     </code>
 commit 175eff8d2f7f0f6bffa4d387d1d1e0442426aed5
+
 ## Modify recipe model to handle storing images
+
 - For generating paths is best to us os.path.join because it's creating the path relative to the os(window | linux | mac etc).
 - After adding new fields to a Model, command : docker-compose run --rm app sh -c "python manage.py makemigrations"
 commit 30927f95fef5057039c6546d6e03513b34af4600
+
 ## Write tests for uploading images
-Resource : https://docs.python.org/3/library/tempfile.html#tempfile.NamedTemporaryFile
+
+Resource : <https://docs.python.org/3/library/tempfile.html#tempfile.NamedTemporaryFile>
 commit 726a3fa798b3bea8fdcd04f542b5a3cafe143067
+
 ## Implement image API
-Resource : https://drf-spectacular.readthedocs.io/en/latest/faq.html#filefield-imagefield-is-not-handled-properly-in-the-schema
+
+Resource : <https://drf-spectacular.readthedocs.io/en/latest/faq.html#filefield-imagefield-is-not-handled-properly-in-the-schema>
 commit 09c1000aab56dc7fcd3f920e93b026e2497071a8
+
 ## Review image uploading in browser
+
 commit a19acb5d972a0ec8346dbebcac65591cc3221000
+
 ## Summary
+
 - Added image upload feature
 - Configured volumes
 - Tested in Browser
 
 # Section 17:Implement filtering
+
 ## Filtering Design
+
 - Filter recipes by ingredients / tags
-    - Find certain types of recipes
+  - Find certain types of recipes
 - Filter tags / ingredients by assigned
-    - List filter options for recipes
+  - List filter options for recipes
 - Define OpenAPI parameters
-    - Update documentation
+  - Update documentation
 - Example requests
-    - Filter recipe by tag(s):
-        - GET /api/recipe/recipes/?tags=1,2,3
-    - Filter recipe by ingredient(s):
-        - GET /api/recipe/recipes/?ingredients=1,2,3
-    - Filter tags by assigned:
-        - GET /api/recipe/tags/?assigned_only=1
-    - Filter ingredients by assigned:
-        - GET /api/recipe/ingredients/?assigned_only=1
+  - Filter recipe by tag(s):
+    - GET /api/recipe/recipes/?tags=1,2,3
+  - Filter recipe by ingredient(s):
+    - GET /api/recipe/recipes/?ingredients=1,2,3
+  - Filter tags by assigned:
+    - GET /api/recipe/tags/?assigned_only=1
+  - Filter ingredients by assigned:
+    - GET /api/recipe/ingredients/?assigned_only=1
 - OpenAPI Schema
-    - Auto generated schema
-    - Some things need to be manually configured
-        - Custom query params (filtering)
-    - Use DRF Spectacular extend_schema_view decorator
-##  Add tests for filtering recipes
-Resource : https://drf-spectacular.readthedocs.io/en/latest/customization.html
+  - Auto generated schema
+  - Some things need to be manually configured
+    - Custom query params (filtering)
+  - Use DRF Spectacular extend_schema_view decorator
+
+## Add tests for filtering recipes
+
+Resource : <https://drf-spectacular.readthedocs.io/en/latest/customization.html>
 commit 3f934db72d593d3767e853c2af7fd6312552e1d8
+
 ## Implement recipe filter feature
+
 commit f05269fb6e8cdf59a4587b93ca3192be1716de18
+
 ## Add tests for filtering tags and ingredients
+
 commit e89bb8b911af836d00187970f2cf113f35e72d56
+
 ## Implement tag and ingredient filtering
+
 commit 2054c9135069346ffc65fed975669b9aa2a741fe
+
 ## Review filtering in browser
+
 ## Summary
+
 - Added filtering recipes by tags/ingredients
 - Add filtering tags/ingredients by those assigned to recipes
 - Customized OpenAPI Schema
+
 # Section 18:Deployment
+
 ## Deployment plan
-Resource : https://www.youtube.com/watch?v=IoxHUrbiqUo
+
+Resource : <https://www.youtube.com/watch?v=IoxHUrbiqUo>
+
 - Option 1: Installing directly on a server (old method)
-    - Creating a virtual server (Linux)
-    - Installing dependencies as needed
-        - NGINX, Apache web server
-        - Python, Python virtual environment
-        - Install and run project on server
+  - Creating a virtual server (Linux)
+  - Installing dependencies as needed
+    - NGINX, Apache web server
+    - Python, Python virtual environment
+    - Install and run project on server
 - Option 2: Use Docker-compose to run app directly on Linux server (not a best approach for long terms solution)
-    - Set up Linux server
-    - Run service using Docker-compose
-        - Create application, set it up to have all dependencies installed in Docker
-        - Then simply run Docker-compose file on the server
+  - Set up Linux server
+  - Run service using Docker-compose
+    - Create application, set it up to have all dependencies installed in Docker
+    - Then simply run Docker-compose file on the server
 - Option 3: A managed Docker orchestration service (more expensive, complex to set up)
-    - AWS ECS
-    - Kubernetes
-        - Google Cloud, AWS, Azure, etc.
+  - AWS ECS
+  - Kubernetes
+    - Google Cloud, AWS, Azure, etc.
 - Option 4: Use a serverless technology (tied in with vendor, challenging to move away, need to build app specifically to run on serverless platform)
-    - Google App Engine
-    - Run a serverless application in the cloud
+  - Google App Engine
+  - Run a serverless application in the cloud
 - Various ways to Deploy Django
-    - Directly on server
-        - Run directly on server
-        - Docker
-    - Serverless Cloud
-        - Google Cloud Run / Google App Engine
-        - AWS Elastic Beanstalk / ECS Fargate
+  - Directly on server
+    - Run directly on server
+    - Docker
+  - Serverless Cloud
+    - Google Cloud Run / Google App Engine
+    - AWS Elastic Beanstalk / ECS Fargate
 - How we'll deploy
-    - Single VPS on AWS (EC2) virtual private server
-    - Docker / Docker Compose
+  - Single VPS on AWS (EC2) virtual private server
+  - Docker / Docker Compose
 - Why this approach?
-    - Simple solution
-    - Great for testing during development
-    - Low cost
+  - Simple solution
+  - Great for testing during development
+  - Low cost
 - Steps we'll take
     1. Configure project for development
     2. Create server on AWS
     3. Deploy app
+
 ## Django deployment overview
+
 - Deploying Django
     1. Setup a proxy
     2. Handle static / media files
     3. Configuration
 - Components
-    - WSGI (Web server gateway interface)
-    - Persistent Data
-    - Reverse Proxy (accept any request to our application)
+  - WSGI (Web server gateway interface)
+  - Persistent Data
+  - Reverse Proxy (accept any request to our application)
 - Why use a reverse proxy?
-    - Best practice when deploying Django
-    - WSGI server great at executing Python (not supper efficient at serving static files)
-        - Not great at serving data
-    - Web servers
-        - Serve data really efficiently
+  - Best practice when deploying Django
+  - WSGI server great at executing Python (not supper efficient at serving static files)
+    - Not great at serving data
+  - Web servers
+    - Serve data really efficiently
 - Applications we'll use
-    - nginx
-        - Open source, fast, secure, production grade
-    - uWSGI
-        - Open source, fast, lightweight, simple to use
-    - Docker Compose
-        - Pulls it all together
+  - nginx
+    - Open source, fast, secure, production grade
+  - uWSGI
+    - Open source, fast, lightweight, simple to use
+  - Docker Compose
+    - Pulls it all together
 - Docker compose setup
-    - app uWSGI service
-    - PostgreSQL database
-    - reverse proxy nginx service
-    - static-data volume
-    - postgres-data volume
-    - Mix of requests to the reverse proxy
+  - app uWSGI service
+  - PostgreSQL database
+  - reverse proxy nginx service
+  - static-data volume
+  - postgres-data volume
+  - Mix of requests to the reverse proxy
 - Handle configuration
-    - Various approaches
-        - Environment variables (what we'll use, popular approach, simple to use)
-        - Secret managers
+  - Various approaches
+    - Environment variables (what we'll use, popular approach, simple to use)
+    - Secret managers
 - How configuration works
-    - Create .env file on server
-    - Set values in Docker compose
+  - Create .env file on server
+  - Set values in Docker compose
 - Using AWS
-    - App host on AWS
-        - Popular platform
-    - Responsible for security and costs
-    - Must keep your account secure!
-        - Look up best practice on AWS
-            - Use MFA
-            - Use string passwords
+  - App host on AWS
+    - Popular platform
+  - Responsible for security and costs
+  - Must keep your account secure!
+    - Look up best practice on AWS
+      - Use MFA
+      - Use string passwords
             Don't share your account details
-            - Keep your machine secure and update to date
-            - Delete unused accounts
+      - Keep your machine secure and update to date
+      - Delete unused accounts
+
 ## Add uWSGI to project
-Resource : https://pypi.org/project/uWSGI/
+
+Resource : <https://pypi.org/project/uWSGI/>
 commit 323dde5afc4f5fc2c716e68c7bdde1380e9d14f8
+
 ## Create proxy configs
-Resource : https://uwsgi-docs.readthedocs.io/en/latest/Nginx.html#what-is-the-uwsgi-params-file
+
+Resource : <https://uwsgi-docs.readthedocs.io/en/latest/Nginx.html#what-is-the-uwsgi-params-file>
 commit bde4c26c904342cc702b395496d485fd82119156
+
 ## Create proxy Dockerfile
-Resource : https://hub.docker.com/r/nginxinc/nginx-unprivileged
+
+Resource : <https://hub.docker.com/r/nginxinc/nginx-unprivileged>
 commit 1185d9af2415426fb69b5b8cbc36099720be51f8
+
 ## Handling configuration
+
 - Using environment variables
-    - Store configuration in a file
-    - Retrieve values with Docker compose
-    - Pass to applications
+  - Store configuration in a file
+  - Retrieve values with Docker compose
+  - Pass to applications
+
 ## Create docker compose config
-Resource : https://docs.docker.com/compose/environment-variables/
+
+Resource : <https://docs.docker.com/compose/environment-variables/>
 commit cb6325272ce2dd1baa1e4910d57c0ea09d830458
+
 ## Update Django settings
+
 command : docker-compose -f docker-compose-deploy.yml down (clear any running container)
 commit 9e30133ed5c20192149fa7159ea50b9247bcb371
+
 ## Creating a virtual server
-Resource : https://chocolatey.org/
+
+Resource : <https://chocolatey.org/>
+
 - Steps
     1. Create AWS account and user
     2. Login to console
     3. Create new virtual server
 - AWS Costs calculator.aws
 - Connecting to the server
-    - Connect via SSH
-    - Use same SSH key as for GitHub
+  - Connect via SSH
+  - Use same SSH key as for GitHub
 - Windows users
-    - Doesn't have SSH by default
-    - Install Chocolatey (package manager)
-        - Run choco install openssh
+  - Doesn't have SSH by default
+  - Install Chocolatey (package manager)
+    - Run choco install openssh
+
 ## Create AWS account and user
+
 ## Upload SSH Key to AWS
+
 ## Create EC2 instance
+
 command : ssh ec2-user@3.83.68.31 (connect to ec2 instance server)
+
 ## Setup GitHub deploy key
-- Resource : https://github.com/LondonAppDeveloper/build-a-backend-rest-api-with-python-django-advanced-resources/blob/main/deployment.md#deployment
+
+- Resource : <https://github.com/LondonAppDeveloper/build-a-backend-rest-api-with-python-django-advanced-resources/blob/main/deployment.md#deployment>
 - Connect to server
 - Create ssh key
-    - command : ssh-keygen -t ed25519 -b 4096
-    - command : cat ~/.ssh/id_ed25519.pub
-    - copy output of ssh key
-    - On Github account  add ssh key to deploy key on choice repository (recipe-api) (allow write access not necessary, you only want to pull not to push code from production server)
+  - command : ssh-keygen -t ed25519 -b 4096
+  - command : cat ~/.ssh/id_ed25519.pub
+  - copy output of ssh key
+  - On Github account  add ssh key to deploy key on choice repository (recipe-api) (allow write access not necessary, you only want to pull not to push code from production server)
+
 ## Install Docker, Compose and Git
-Resource : https://github.com/LondonAppDeveloper/build-a-backend-rest-api-with-python-django-advanced-resources/blob/main/deployment.md#install-and-configure-depdencies
+
+Resource : <https://github.com/LondonAppDeveloper/build-a-backend-rest-api-with-python-django-advanced-resources/blob/main/deployment.md#install-and-configure-depdencies>
+
 ## Clone and configure project
+
 - Clone Repository via SSH Link
-    - command : git clone git@github.com:crunck78/recipe-app-api.git
+  - command : git clone git@github.com:crunck78/recipe-app-api.git
+
 ## Run service
-Resource : https://github.com/LondonAppDeveloper/build-a-backend-rest-api-with-python-django-advanced-resources/blob/main/deployment.md#running-docker-service
+
+Resource : <https://github.com/LondonAppDeveloper/build-a-backend-rest-api-with-python-django-advanced-resources/blob/main/deployment.md#running-docker-service>
+
 ## Updating service
+
 - After making changes and pulling changes to server, rebuild app
-    - command : docker-compose -f docker-compose-deploy.yml build app
+  - command : docker-compose -f docker-compose-deploy.yml build app
 - Restart app in background with not dependencies (does not install dependencies)
-    - command : docker-compose -f docker-compose-deploy.yml up --no-deps -d app
+  - command : docker-compose -f docker-compose-deploy.yml up --no-deps -d app
 commit dc01894ec0736c30f620cff44ccf5be38bbf548c
+
 ## Deployment summary
+
 - Configured project for Deployment
 - Created EC2 server instance
 - Deployed aplication to server
 - Updated service
 
 # Section 19:Summary
+
 ## Course overview
+
 - Covered :
-    - Setting up a project using Docker configuration
-    - Github Actions
-    - Adding endpoints for creating and managing users, tags, ingredients, recipes
-    - Adding filtering to our list endpoints
-    - Uploading images
-    - Deploying code to a server
-    - Writing lost of unit tests!
+  - Setting up a project using Docker configuration
+  - Github Actions
+  - Adding endpoints for creating and managing users, tags, ingredients, recipes
+  - Adding filtering to our list endpoints
+  - Uploading images
+  - Deploying code to a server
+  - Writing lost of unit tests!
 
 # section 20:Upgrades
+
 ## Upgrading to Django 4
+
 - command : docker-compose build (we need to rebuild images, after upgrading packages versions)
